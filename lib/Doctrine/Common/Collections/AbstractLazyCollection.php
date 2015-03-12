@@ -19,8 +19,6 @@
 
 namespace Doctrine\Common\Collections;
 
-use Closure;
-
 /**
  * Lazy collection that is backed by a concrete collection
  *
@@ -206,7 +204,7 @@ abstract class AbstractLazyCollection implements Collection
     /**
      * {@inheritDoc}
      */
-    public function exists(Closure $p)
+    public function exists(callable $p)
     {
         $this->initialize();
         return $this->collection->exists($p);
@@ -215,7 +213,7 @@ abstract class AbstractLazyCollection implements Collection
     /**
      * {@inheritDoc}
      */
-    public function filter(Closure $p)
+    public function filter(callable $p)
     {
         $this->initialize();
         return $this->collection->filter($p);
@@ -224,7 +222,7 @@ abstract class AbstractLazyCollection implements Collection
     /**
      * {@inheritDoc}
      */
-    public function forAll(Closure $p)
+    public function forAll(callable $p)
     {
         $this->initialize();
         return $this->collection->forAll($p);
@@ -233,7 +231,7 @@ abstract class AbstractLazyCollection implements Collection
     /**
      * {@inheritDoc}
      */
-    public function map(Closure $func)
+    public function map(callable $func)
     {
         $this->initialize();
         return $this->collection->map($func);
@@ -242,7 +240,7 @@ abstract class AbstractLazyCollection implements Collection
     /**
      * {@inheritDoc}
      */
-    public function partition(Closure $p)
+    public function partition(callable $p)
     {
         $this->initialize();
         return $this->collection->partition($p);

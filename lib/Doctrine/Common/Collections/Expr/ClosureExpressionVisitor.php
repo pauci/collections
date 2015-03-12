@@ -77,11 +77,11 @@ class ClosureExpressionVisitor extends ExpressionVisitor
      *
      * @param string   $name
      * @param int      $orientation
-     * @param \Closure $next
+     * @param callable $next
      *
      * @return \Closure
      */
-    public static function sortByField($name, $orientation = 1, \Closure $next = null)
+    public static function sortByField($name, $orientation = 1, callable $next = null)
     {
         if ( ! $next) {
             $next = function() {

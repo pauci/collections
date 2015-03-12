@@ -20,7 +20,6 @@
 namespace Doctrine\Common\Collections;
 
 use ArrayIterator;
-use Closure;
 use Doctrine\Common\Collections\Expr\ClosureExpressionVisitor;
 
 /**
@@ -192,7 +191,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function exists(Closure $p)
+    public function exists(callable $p)
     {
         foreach ($this->elements as $key => $element) {
             if ($p($key, $element)) {
@@ -282,7 +281,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function map(Closure $func)
+    public function map(callable $func)
     {
         return new static(array_map($func, $this->elements));
     }
@@ -290,7 +289,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function filter(Closure $p)
+    public function filter(callable $p)
     {
         return new static(array_filter($this->elements, $p));
     }
@@ -298,7 +297,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function forAll(Closure $p)
+    public function forAll(callable $p)
     {
         foreach ($this->elements as $key => $element) {
             if ( ! $p($key, $element)) {
@@ -312,7 +311,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function partition(Closure $p)
+    public function partition(callable $p)
     {
         $matches = $noMatches = array();
 
